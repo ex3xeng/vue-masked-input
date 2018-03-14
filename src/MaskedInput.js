@@ -24,6 +24,8 @@ export default {
         cut: this.cut,
         copy: this.copy,
         paste: this.paste,
+        focus: this.focus,
+        blur: this.blur,
       },
     });
   },
@@ -212,7 +214,12 @@ export default {
           break;
       }
     },
-
+    focus(e) {
+      this.$emit('focus', e);
+    },
+    blur(e) {
+      this.$emit('blur', e);
+    },
     keyPress(e) { // works only on Desktop
       if (e.ctrlKey) return; // Fix FF copy/paste issue
       // IE & FF are not trigger textInput event, so we have to force it
